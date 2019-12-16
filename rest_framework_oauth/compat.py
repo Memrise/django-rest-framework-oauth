@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 import django
 import inspect
 
-from django.utils import six
+import six
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
