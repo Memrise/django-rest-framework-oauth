@@ -4,7 +4,6 @@ import re
 import os
 import sys
 from setuptools import setup
-from setuptools.command.test import test as TestCommand
 
 
 name = 'djangorestframework-oauth'
@@ -14,20 +13,6 @@ url = 'https://github.com/jpadilla/django-rest-framework-oauth'
 author = 'José Padilla'
 author_email = 'hello@jpadilla.com'
 license = 'BSD'
-
-
-# This command has been borrowed from
-# https://github.com/getsentry/sentry/blob/master/setup.py
-class PyTest(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = ['tests']
-        self.test_suite = True
-
-    def run_tests(self):
-        import pytest
-        errno = pytest.main(self.test_args)
-        sys.exit(errno)
 
 
 def get_version(package):
@@ -86,7 +71,6 @@ setup(
     author_email=author_email,
     packages=get_packages(package),
     package_data=get_package_data(package),
-    cmdclass={'test': PyTest},
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
